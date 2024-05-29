@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <Section>
-      <Navbar />
       <div className="ellipse"></div>
       <div className="container">
         <div className="content">

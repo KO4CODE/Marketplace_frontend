@@ -20,7 +20,7 @@ const Div = styled.div`
     font-size: 1.1rem;
     cursor: pointer;
     :not(.blue) {
-      background-color: transparent;
+      background-color: black;
       border: 1px solid white;
     }
   }

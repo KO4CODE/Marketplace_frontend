@@ -83,16 +83,20 @@ const Container = styled.footer`
   background: linear-gradient(to right, #443357, #394053);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 8rem;
+  padding: 4rem;
   gap: 7rem;
   .row {
-    color: #9ea7ad;
+    color: white;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     .brand {}
     h3 {
       color: white;
+
+      .list{
+        color:white !important;
+      }
     }
     .description {
       color: white;
@@ -114,6 +118,7 @@ const Container = styled.footer`
         }
       }
     }
+
     ul {
       list-style: none;
       display: flex;
@@ -146,3 +151,5 @@ const Container = styled.footer`
     gap: 2rem;
   }
 `;
+
+

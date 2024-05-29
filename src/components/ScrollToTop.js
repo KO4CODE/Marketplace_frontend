@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaChevronUp } from "react-icons/fa";
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
+
 function ScrollToTop() {
   const [visible, setVisible] = useState(false);
   window.addEventListener("scroll", () => {
     window.pageYOffset > 100 ? setVisible(true) : setVisible(false);
   });
+
+    const {pathname} = useLocation()
+  
+    useEffect(()=>{
+      window.scrollTo(0,0)
+  
+    }, [pathname])
+  
 
   return (
     <Div>
@@ -15,6 +26,7 @@ function ScrollToTop() {
     </Div>
   );
 }
+
 
 const Div = styled.div`
   max-width: 100vw;

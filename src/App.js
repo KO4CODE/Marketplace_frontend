@@ -10,11 +10,14 @@ import Clients from "./components/Clients";
 import CreateAndSell from "./components/CreateAndSell";
 import Choose from "./components/Choose";
 import NFTform from "./components/NFTform";
+import MintNFT from "./components/MintNFT";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<><Home /> <Collection/> <MarketPlace/> </>} />
         <Route path="/marketplace" element={<MarketPlace />} />
@@ -24,6 +27,7 @@ function App() {
         <Route path="/create-and-sell" element={<CreateAndSell />} />
         <Route path="/choose" element={<Choose />} />
         <Route path="/nft-management" element={<NFTform />} />
+        <Route path="/mint-nft" element={<MintNFT/>}/>
       </Routes>
       <Footer />
     </Router>

@@ -120,6 +120,7 @@ const Section = styled.section`
 
       .image {
         margin-bottom: 1rem;
+        object-fit:cover;
       }
 
       .name {

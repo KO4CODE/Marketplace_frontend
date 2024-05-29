@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -7,13 +6,13 @@ import { MdClose } from "react-icons/md";
 import logo from "../assets/logo.png";
 import Button from "./Button";
 import { getWeb3 } from "../utils/web3";
-import NFTForm from "./NFTform";
+// import NFTForm from "./NFTform";
 
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [connectedAddress, setConnectedAddress] = useState("");
-  const [showNFTForm, setShowNFTForm] = useState(false);
+  // const [showNFTForm, setShowNFTForm] = useState(false);
 
   const handleConnectWallet = async () => {
     try {
@@ -34,13 +33,13 @@ export default function Navbar() {
   };
 
   const handleCreateNFTClick = () => {
-    setShowNFTForm(true);
+    // setShowNFTForm(true);
     setIsNavOpen(false);
   };
 
-  const handleCancelNFTForm = () => {
-    setShowNFTForm(false);
-  };
+  // const handleCancelNFTForm = () => {
+  //   setShowNFTForm(false);
+  // };
 
   return (
     <>
@@ -73,7 +72,7 @@ export default function Navbar() {
               </CreateButton>
             </li>
             <li>
-              <CreateButton href="#" onClick={handleCreateNFTClick}>
+              <CreateButton href="/mint-nft">
                 Create NFT
               </CreateButton>
             </li>
@@ -87,27 +86,27 @@ export default function Navbar() {
           <Button blue text="Connect wallet" onClick={handleConnectWallet} />
         )}
       </Nav>
-      {showNFTForm && (
+      {/* {showNFTForm && (
         <NFTFormWrapper>
           <NFTForm onCancel={handleCancelNFTForm} />
         </NFTFormWrapper>
-      )}
+      )} */}
     </>
   );
 }
 
-const NFTFormWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
+// const NFTFormWrapper = styled.div`
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(0, 0, 0, 0.5);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   z-index: 1000;
+// `;
 
 const Nav = styled.nav`
   display: flex;

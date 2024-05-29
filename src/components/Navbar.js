@@ -1,5 +1,3 @@
-// src/components/Navbar.js
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -14,6 +12,7 @@ export default function Navbar() {
   const [isConnected, setIsConnected] = useState(false);
   const [connectedAddress, setConnectedAddress] = useState("");
   const [showNFTForm, setShowNFTForm] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleConnectWallet = async () => {
     try {
@@ -33,9 +32,18 @@ export default function Navbar() {
     setIsNavOpen(false);
   };
 
+  const handleCreateClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   const handleCreateNFTClick = () => {
     setShowNFTForm(true);
-    setIsNavOpen(false);
+    setIsDropdownOpen(false);
+  };
+
+  const handleCreateCollectionClick = () => {
+    alert('Create Collection clicked!');
+    setIsDropdownOpen(false);
   };
 
   const handleCancelNFTForm = () => {
@@ -72,10 +80,16 @@ export default function Navbar() {
                 Sellers
               </CreateButton>
             </li>
-            <li>
-              <CreateButton href="#" onClick={handleCreateNFTClick}>
-                Create NFT
+            <li className="dropdown">
+              <CreateButton href="#" onClick={handleCreateClick}>
+                Create
               </CreateButton>
+              {isDropdownOpen && (
+                <ul className="dropdown-menu">
+                  <li onClick={handleCreateNFTClick}>Create NFT</li>
+                  <li onClick={handleCreateCollectionClick}>Create Collection</li>
+                </ul>
+              )}
             </li>
           </ul>
         </div>
@@ -92,6 +106,9 @@ export default function Navbar() {
           <NFTForm onCancel={handleCancelNFTForm} />
         </NFTFormWrapper>
       )}
+      <ContentWrapper>
+        {/* Your main content here */}
+      </ContentWrapper>
     </>
   );
 }
@@ -110,11 +127,16 @@ const NFTFormWrapper = styled.div`
 `;
 
 const Nav = styled.nav`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .brand img {
     width: 150px;
@@ -130,15 +152,31 @@ const Nav = styled.nav`
     list-style-type: none;
 
     li {
-      a {
-        text-decoration: none;
-        color: black;
-        font-size: 1.2rem;
-        transition: color 0.3s;
+      position: relative;
 
-        &:hover {
-          color: #007bff;
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #f1f1f1;
+          }
         }
+      }
+
+      &:hover .dropdown-menu {
+        display: block;
       }
     }
   }
@@ -185,4 +223,8 @@ const CreateButton = styled.a`
   &:hover {
     color: #007bff;
   }
+`;
+
+const ContentWrapper = styled.div`
+  padding-top: 70px; /* Adjust this value if needed */
 `;
